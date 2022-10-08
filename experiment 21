@@ -54,10 +54,3 @@ mysql> select e.first_name,e.last_name,d.dname
 | ram        | goud      | research      |
 +------------+-----------+---------------+
 2 rows in set (0.03 sec)
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Statu
