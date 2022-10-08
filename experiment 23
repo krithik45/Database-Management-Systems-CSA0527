@@ -1,0 +1,123 @@
+mysql> create table gh(PatientID int(2),PatientName char(20),PatientNo int(10),Disease char(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc gh;
++-------------+----------+------+-----+---------+-------+
+| Field       | Type     | Null | Key | Default | Extra |
++-------------+----------+------+-----+---------+-------+
+| PatientID   | int(2)   | YES  |     | NULL    |       |
+| PatientName | char(20) | YES  |     | NULL    |       |
+| PatientNo   | int(10)  | YES  |     | NULL    |       |
+| Disease     | char(10) | YES  |     | NULL    |       |
++-------------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into gh(patientid,patientname,patientno,disease)values('1','Rohit','9789456201','Heart');
+ERROR 1264 (22003): Out of range value for column 'PatientNo' at row 1
+mysql> insert into gh(patientid,patientname,patientno,disease)values('1','Rohit','978945621','Heart');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from gh;
++-----------+-------------+-----------+---------+
+| PatientID | PatientName | PatientNo | Disease |
++-----------+-------------+-----------+---------+
+|         1 | Rohit       | 978945621 | Heart   |
++-----------+-------------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into gh(patientid,patientname,patientno,disease)values('2','Lohi','6458945621','Heart');
+ERROR 1264 (22003): Out of range value for column 'PatientNo' at row 1
+mysql> insert into gh(patientid,patientname,patientno,disease)values('2','Lohi','645894561','Heart');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from gh;
++-----------+-------------+-----------+---------+
+| PatientID | PatientName | PatientNo | Disease |
++-----------+-------------+-----------+---------+
+|         1 | Rohit       | 978945621 | Heart   |
+|         2 | Lohi        | 645894561 | Heart   |
++-----------+-------------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> insert into gh(patientid,patientname,patientno,disease)values('3','Ravi','854945621','Lung');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from gh;
++-----------+-------------+-----------+---------+
+| PatientID | PatientName | PatientNo | Disease |
++-----------+-------------+-----------+---------+
+|         1 | Rohit       | 978945621 | Heart   |
+|         2 | Lohi        | 645894561 | Heart   |
+|         3 | Ravi        | 854945621 | Lung    |
++-----------+-------------+-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> insert into gh(patientid,patientname,patientno,disease)values('4','Kishore','645754561','Kidney');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from gh;
++-----------+-------------+-----------+---------+
+| PatientID | PatientName | PatientNo | Disease |
++-----------+-------------+-----------+---------+
+|         1 | Rohit       | 978945621 | Heart   |
+|         2 | Lohi        | 645894561 | Heart   |
+|         3 | Ravi        | 854945621 | Lung    |
+|         4 | Kishore     | 645754561 | Kidney  |
++-----------+-------------+-----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into gh(patientid,patientname,patientno,disease)values('5','Ranjith','745945621','Liver');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from gh;
++-----------+-------------+-----------+---------+
+| PatientID | PatientName | PatientNo | Disease |
++-----------+-------------+-----------+---------+
+|         1 | Rohit       | 978945621 | Heart   |
+|         2 | Lohi        | 645894561 | Heart   |
+|         3 | Ravi        | 854945621 | Lung    |
+|         4 | Kishore     | 645754561 | Kidney  |
+|         5 | Ranjith     | 745945621 | Liver   |
++-----------+-------------+-----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> insert into gh(patientid,patientname,patientno,disease)values('6','Joe','845574561','Kidney');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from gh;
++-----------+-------------+-----------+---------+
+| PatientID | PatientName | PatientNo | Disease |
++-----------+-------------+-----------+---------+
+|         1 | Rohit       | 978945621 | Heart   |
+|         2 | Lohi        | 645894561 | Heart   |
+|         3 | Ravi        | 854945621 | Lung    |
+|         4 | Kishore     | 645754561 | Kidney  |
+|         5 | Ranjith     | 745945621 | Liver   |
+|         6 | Joe         | 845574561 | Kidney  |
++-----------+-------------+-----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select avg(heart) from gh;
+ERROR 1054 (42S22): Unknown column 'heart' in 'field list'
+mysql> select avg(disease) from gh;
++--------------+
+| avg(disease) |
++--------------+
+|            0 |
++--------------+
+1 row in set, 6 warnings (0.01 sec)
+
+mysql> select patient name,disease from gh order by patientno;
+ERROR 1054 (42S22): Unknown column 'patient' in 'field list'
+mysql> select patientname,disease from gh order by patientno;
++-------------+---------+
+| patientname | disease |
++-------------+---------+
+| Kishore     | Kidney  |
+| Lohi        | Heart   |
+| Ranjith     | Liver   |
+| Joe         | Kidney  |
+| Ravi        | Lung    |
+| Rohit       | Heart   |
++-------------+---------+
+6 rows in set (0.01 sec)
