@@ -1,0 +1,80 @@
+mysql> create table bpc(Sno int(2),Bookname char(10),Authorname char(10),PublishedYear int(10),Price int(4));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc bpc;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| Sno           | int(2)   | YES  |     | NULL    |       |
+| Bookname      | char(10) | YES  |     | NULL    |       |
+| Authorname    | char(10) | YES  |     | NULL    |       |
+| PublishedYear | int(10)  | YES  |     | NULL    |       |
+| Price         | int(4)   | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into dpc(sno,bookname,authorname,publishedyear,price)values('1','Wingoffire','AbdulKalam','2015','850');
+ERROR 1146 (42S02): Table 'dbms.dpc' doesn't exist
+mysql> insert into bpc(sno,bookname,authorname,publishedyear,price)values('1','Wingoffire','AbdulKalam','2015','850');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select from*bpc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from*bpc' at line 1
+mysql> select bpc;
+ERROR 1054 (42S22): Unknown column 'bpc' in 'field list'
+mysql> select *from bpc;
++------+------------+------------+---------------+-------+
+| Sno  | Bookname   | Authorname | PublishedYear | Price |
++------+------------+------------+---------------+-------+
+|    1 | Wingoffire | AbdulKalam |          2015 |   850 |
++------+------------+------------+---------------+-------+
+1 row in set (0.01 sec)
+
+mysql> insert into bpc(sno,bookname,authorname,publishedyear,price)values('2','Money','Elon Musk','2019','1850');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from bpc;
++------+------------+------------+---------------+-------+
+| Sno  | Bookname   | Authorname | PublishedYear | Price |
++------+------------+------------+---------------+-------+
+|    1 | Wingoffire | AbdulKalam |          2015 |   850 |
+|    2 | Money      | Elon Musk  |          2019 |  1850 |
++------+------------+------------+---------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into bpc(sno,bookname,authorname,publishedyear,price)values('3','S Things','R Brothers','2017','1500');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from bpc;
++------+------------+------------+---------------+-------+
+| Sno  | Bookname   | Authorname | PublishedYear | Price |
++------+------------+------------+---------------+-------+
+|    1 | Wingoffire | AbdulKalam |          2015 |   850 |
+|    2 | Money      | Elon Musk  |          2019 |  1850 |
+|    3 | S Things   | R Brothers |          2017 |  1500 |
++------+------------+------------+---------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select avg(price) from bpc;
++------------+
+| avg(price) |
++------------+
+|  1400.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select max(price),min(price) from bpc;
++------------+------------+
+| max(price) | min(price) |
++------------+------------+
+|       1850 |        850 |
++------------+------------+
+1 row in set (0.01 sec)
+
+mysql> select sum(price) from bpc;
++------------+
+| sum(price) |
++------------+
+|       4200 |
++------------+
+1 row in set (0.00 sec)
