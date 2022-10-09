@@ -1,0 +1,112 @@
+mysql> create table crc(Sno int(2),CoustomerName char(15),CoustomerNo int(11),AadharNo int(17),VechicleName char(20),VechicleNo int(7),Date int(7),Time int(4));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc crc;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| Sno           | int(2)   | YES  |     | NULL    |       |
+| CoustomerName | char(15) | YES  |     | NULL    |       |
+| CoustomerNo   | int(11)  | YES  |     | NULL    |       |
+| AadharNo      | int(17)  | YES  |     | NULL    |       |
+| VechicleName  | char(20) | YES  |     | NULL    |       |
+| VechicleNo    | int(7)   | YES  |     | NULL    |       |
+| Date          | int(7)   | YES  |     | NULL    |       |
+| Time          | int(4)   | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleName,VechicleNo,Date,Time)values('1','Benju','6369728363','6549874563216549','Audi A3','034597','20 07','9');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('1','Benju','6369728363','6549874563216549','Audi A3','034597','20 07','9');
+ERROR 1264 (22003): Out of range value for column 'CoustomerNo' at row 1
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('1','Benju','636972836','6549874563216549','Audi A3','034597','20 07','9');
+ERROR 1264 (22003): Out of range value for column 'AadharNo' at row 1
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('1','Benju','636972836','654987456321649','Audi A3','034597','20 07','9');
+ERROR 1264 (22003): Out of range value for column 'AadharNo' at row 1
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('1','Benju','636972836','654987449','Audi A3','034597','20 07','9');
+ERROR 1265 (01000): Data truncated for column 'Date' at row 1
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('1','Benju','636972836','654987449','Audi A3','034597','2007','9');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from crc;
++------+---------------+-------------+-----------+--------------+------------+------+------+
+| Sno  | CoustomerName | CoustomerNo | AadharNo  | VechicleName | VechicleNo | Date | Time |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+|    1 | Benju         |   636972836 | 654987449 | Audi A3      |      34597 | 2007 |    9 |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('2','Barath','634567836','7514987449','Audi A1','654597','0407','8');
+ERROR 1264 (22003): Out of range value for column 'AadharNo' at row 1
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('2','Barath','634567836','751498744','Audi A1','654597','0407','8');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from crc;
++------+---------------+-------------+-----------+--------------+------------+------+------+
+| Sno  | CoustomerName | CoustomerNo | AadharNo  | VechicleName | VechicleNo | Date | Time |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+|    1 | Benju         |   636972836 | 654987449 | Audi A3      |      34597 | 2007 |    9 |
+|    2 | Barath        |   634567836 | 751498744 | Audi A1      |     654597 |  407 |    8 |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('3','Sarath','369852147','789456321','BMW','465584','0204','4');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from crc;
++------+---------------+-------------+-----------+--------------+------------+------+------+
+| Sno  | CoustomerName | CoustomerNo | AadharNo  | VechicleName | VechicleNo | Date | Time |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+|    1 | Benju         |   636972836 | 654987449 | Audi A3      |      34597 | 2007 |    9 |
+|    2 | Barath        |   634567836 | 751498744 | Audi A1      |     654597 |  407 |    8 |
+|    3 | Sarath        |   369852147 | 789456321 | BMW          |     465584 |  204 |    4 |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+3 rows in set (0.01 sec)
+
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('5','Ranji','634567836','751498744','BMW 1','654597','0407','8');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from crc;
++------+---------------+-------------+-----------+--------------+------------+------+------+
+| Sno  | CoustomerName | CoustomerNo | AadharNo  | VechicleName | VechicleNo | Date | Time |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+|    1 | Benju         |   636972836 | 654987449 | Audi A3      |      34597 | 2007 |    9 |
+|    2 | Barath        |   634567836 | 751498744 | Audi A1      |     654597 |  407 |    8 |
+|    3 | Sarath        |   369852147 | 789456321 | BMW          |     465584 |  204 |    4 |
+|    5 | Ranji         |   634567836 | 751498744 | BMW 1        |     654597 |  407 |    8 |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+4 rows in set (0.00 sec)
+
+mysql> insert into crc(Sno,CoustomerName,CoustomerNo,AadharNo,VechicleName,VechicleNo,Date,Time)values('4','Sanju','789652147','987756321','BMW','465584','0904','7');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from crc;
++------+---------------+-------------+-----------+--------------+------------+------+------+
+| Sno  | CoustomerName | CoustomerNo | AadharNo  | VechicleName | VechicleNo | Date | Time |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+|    1 | Benju         |   636972836 | 654987449 | Audi A3      |      34597 | 2007 |    9 |
+|    2 | Barath        |   634567836 | 751498744 | Audi A1      |     654597 |  407 |    8 |
+|    3 | Sarath        |   369852147 | 789456321 | BMW          |     465584 |  204 |    4 |
+|    5 | Ranji         |   634567836 | 751498744 | BMW 1        |     654597 |  407 |    8 |
+|    4 | Sanju         |   789652147 | 987756321 | BMW          |     465584 |  904 |    7 |
++------+---------------+-------------+-----------+--------------+------------+------+------+
+5 rows in set (0.00 sec)
+
+mysql> ;
+ERROR:
+No query specified
+
+mysql> select customername,customerno from crc order by sno;
+ERROR 1054 (42S22): Unknown column 'customername' in 'field list'
+mysql> select coustomername,coustomerno from crc order by sno;
++---------------+-------------+
+| coustomername | coustomerno |
++---------------+-------------+
+| Benju         |   636972836 |
+| Barath        |   634567836 |
+| Sarath        |   369852147 |
+| Sanju         |   789652147 |
+| Ranji         |   634567836 |
++---------------+-------------+
+5 rows in set (0.01 sec)
